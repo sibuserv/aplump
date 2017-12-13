@@ -1,0 +1,39 @@
+aplump – plump Android
+
+Copyright: 2017 Boris Pek <tehnick-8@yandex.ru>
+License: MIT (Expat)
+
+Homepage: https://github.com/sibuserv/aplump
+
+Description:
+Collection of scripts for building of some extra libraries for Android.
+
+Dependencies:
+Android NDK, bash, realpath, pkg-config, make, autoreconf, automake, cmake,
+wget, curl, tar (with gzip, bzip2 and xz support), patch, sed, find, openssl
+
+Examples of usage:
+  make
+  make openssl freeglut
+  make install
+  make list
+  make clean
+  make distclean
+  make version
+  make help
+
+Some useful links:
+  https://github.com/sibuserv/sibuserv
+  https://github.com/sibuserv/lxe
+  https://github.com/sibuserv/mxe
+
+
+Note for qmake based projects:
+android: {
+    # https://doc.qt.io/qt-5/opensslsupport.html
+    message(ANDROID_PLATFORM_PATH = $$ANDROID_PLATFORM_PATH)
+    ANDROID_EXTRA_LIBS = \
+        $$ANDROID_PLATFORM_PATH/lib/libcrypto.so \
+        $$ANDROID_PLATFORM_PATH/lib/libssl.so
+}
+

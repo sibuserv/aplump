@@ -1,0 +1,6 @@
+/android-ndk*
+/installed*
+/log*
+/src*
+/tmp*
+*settings.sh.*
