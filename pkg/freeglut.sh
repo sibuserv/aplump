@@ -21,11 +21,10 @@
         SetCrossToolchainVariables
         SetCrossToolchainPath
 
-#        export ANDROID_TOOLCHAIN="${ANDROID_NDK_ROOT}/toolchains/${TOOLCHAIN}"
-#            -DCMAKE_TOOLCHAIN_FILE="${PKG_SRC_DIR}/${PKG_SUBDIR}/android_toolchain.cmake" \
         ConfigureCmakeProject \
             -DCMAKE_TOOLCHAIN_FILE="${ANDROID_NDK_ROOT}/build/cmake/android.toolchain.cmake" \
             -DCMAKE_INSTALL_PREFIX="${PREFIX}/usr" \
+            -DANDROID_TOOLCHAIN="gcc" \
             -DFREEGLUT_BUILD_SHARED_LIBS=OFF \
             -DFREEGLUT_BUILD_STATIC_LIBS=ON \
             -DFREEGLUT_REPLACE_GLUT=ON \
