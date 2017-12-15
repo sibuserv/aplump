@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ANDROID_SDK_ROOT="/opt/android_sdk/android-sdk-linux"
+# https://dl.google.com/android/repository/android-ndk-r15b-linux-x86_64.zip
 ANDROID_NDK_ROOT="/opt/android_ndk/android-ndk-r15b"
 
 PLATFORMS="
@@ -13,7 +13,6 @@ PLATFORMS="
           android-23
           android-24
           android-26
-          android-27
           "
 
 ARCHITECTURES="arm x86"
