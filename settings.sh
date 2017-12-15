@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ANDROID_SDK_ROOT="/opt/android_sdk/android-sdk-linux"
-ANDROID_NDK_ROOT="/opt/android_ndk/android-ndk-r16b"
+ANDROID_NDK_ROOT="/opt/android_ndk/android-ndk-r15b"
 
 PLATFORMS="
           android-16
