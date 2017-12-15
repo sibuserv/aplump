@@ -20,12 +20,6 @@
         SetBuildFlags
         SetCrossToolchainVariables
         SetCrossToolchainPath
-        # dirty workaround for Android NDK r16 and later
-        export ANDROID_API_VER="$(echo ${PLATFORM} | tr -d android-)"
-        # export CC="${CC} '-D__ANDROID_API__=${ANDROID_API_VER}' -I'${SYSROOT}/usr/include' -I'${SYSROOT}/usr/include/${TARGET}'"
-        export CFLAGS="-I'${SYSROOT}/usr/include' -I'${SYSROOT}/usr/include/${TARGET}'"
-        export CXXFLAGS="-I'${SYSROOT}/usr/include' -I'${SYSROOT}/usr/include/${TARGET}'"
-        # end of dirty workaround
         ConfigurePkg \
             --prefix="${PREFIX}/usr" \
             --sysroot="${ANDROID_SYSROOT}" \
@@ -67,7 +61,7 @@
         BuildPkg -j ${JOBS}
         InstallPkg install
 
-        rm -rf "${PREFIX}/usr/share/ffmpeg"
+        rm -rf "${PREFIX}/usr/share"
 
         UnsetCrossToolchainVariables
         CleanPkgBuildDir
