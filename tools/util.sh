@@ -50,6 +50,7 @@ SetAndroidSpecificVariables()
     export CROSS_SYSROOT="${ANDROID_SYSROOT}"
     export NDK_SYSROOT="${ANDROID_SYSROOT}"
 
+    export ANDROID_PLATFORM="${PLATFORM}"
     export ANDROID_API="${PLATFORM}"
     export ANDROID_ARCH="arch-${ARCH}"
 
@@ -98,7 +99,7 @@ SetAndroidSpecificVariables()
     else
         local TOOLCHAIN="${ANDROID_EABI}"
     fi
-    # end of dirty fix
+    # dirty fix because of irrational Qt SDK developers
 
     for HOST in "linux-x86_64" "linux-x86" "darwin-x86_64" "darwin-x86"
     do
@@ -112,7 +113,7 @@ SetAndroidSpecificVariables()
 UnsetAndroidSpecificVariables()
 {
     unset ANDROID_SYSROOT ANDROID_DEV ANDROID_TOOLCHAIN
-    unset ANDROID_API ANDROID_ARCH ANDROID_ABI ANDROID_EABI
+    unset ANDROID_PLATFORM ANDROID_API ANDROID_ARCH ANDROID_ABI ANDROID_EABI
     unset TARGET HOST SYSTEM
 }
 
@@ -353,9 +354,9 @@ ConfigureCmakeProject()
     cd "${BUILD_DIR}/${PKG_SUBDIR}"
     if [ -z "${PKG_SUBDIR_ORIG}" ]
     then
-        "${PREFIX}/bin/${TARGET}-cmake" "${PKG_SRC_DIR}/${PKG_SUBDIR}" "${@}" &>> "${LOG_FILE}"
+        cmake "${PKG_SRC_DIR}/${PKG_SUBDIR}" "${@}" &>> "${LOG_FILE}"
     else
-        "${PREFIX}/bin/${TARGET}-cmake" "${PKG_SRC_DIR}/${PKG_SUBDIR_ORIG}" "${@}" &>> "${LOG_FILE}"
+        cmake "${PKG_SRC_DIR}/${PKG_SUBDIR_ORIG}" "${@}" &>> "${LOG_FILE}"
     fi
     CheckFail "${LOG_FILE}"
 }

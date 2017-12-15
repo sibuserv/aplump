@@ -125,7 +125,7 @@ do
         [ -d "${ANDROID_SYSROOT}" ] || continue
 
         PrepareDirs
-        BuildPackages
+        BuildPackages ${@}
     done
 done
 
