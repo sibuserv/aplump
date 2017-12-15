@@ -1,48 +1,11 @@
+Description: Fix build for Android using clang compiler
+Author: Boris Pek <tehnick-8@yandex.ru>
+Last-Update: 2017-12-15
+
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 28f8651..a42c8e9 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -11,7 +11,7 @@ INCLUDE(GNUInstallDirs)
- # CMAKE_ARCHIVE_OUTPUT_DIRECTORY instead.
- # Static libraries end up in CMAKE_ARCHIVE_OUTPUT_DIRECTORY on all
- # platforms.
--SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
-+SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib)
- SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib)
- SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib)
- 
-@@ -53,9 +53,7 @@ ENDIF()
- OPTION(FREEGLUT_GLES "Use OpenGL ES (requires EGL)" OFF)
- 
- # option to build either as "glut" (ON) or "freeglut" (OFF)
--IF(NOT WIN32)
--    OPTION(FREEGLUT_REPLACE_GLUT "Be a replacement for GLUT" ON)
--ENDIF()
-+OPTION(FREEGLUT_REPLACE_GLUT "Be a replacement for GLUT" ON)
- 
- 
- SET(FREEGLUT_HEADERS
-@@ -346,12 +344,18 @@ ENDIF()
- 
- 
- IF(WIN32)
-+    IF(FREEGLUT_REPLACE_GLUT)
-+        SET(LIBNAME glut)
-+    ELSE()
-+        SET(LIBNAME freeglut)
-+    ENDIF()
-+
-     LIST(APPEND LIBS winmm)
-     IF(FREEGLUT_BUILD_SHARED_LIBS)
--        SET_TARGET_PROPERTIES(freeglut PROPERTIES COMPILE_FLAGS -DFREEGLUT_EXPORTS)
-+        SET_TARGET_PROPERTIES(freeglut PROPERTIES COMPILE_FLAGS -DFREEGLUT_EXPORTS OUTPUT_NAME ${LIBNAME})
-     ENDIF()
-     IF(FREEGLUT_BUILD_STATIC_LIBS)
--        SET_TARGET_PROPERTIES(freeglut_static PROPERTIES COMPILE_FLAGS -DFREEGLUT_STATIC)
-+        SET_TARGET_PROPERTIES(freeglut_static PROPERTIES COMPILE_FLAGS -DFREEGLUT_STATIC OUTPUT_NAME ${LIBNAME})
-         # need to set machine:x64 for linker, at least for VC10, and
-         # doesn't hurt for older compilers:
-         # http://public.kitware.com/Bug/view.php?id=11240#c22768
 @@ -399,7 +403,9 @@ ELSE()
          # '-O0 -gstabs+' helps the currently buggy GDB port
          # Too late to manipulate ENV: SET(ENV{CFLAGS} "$ENV{CFLAGS} -mandroid")
@@ -54,30 +17,3 @@ index 28f8651..a42c8e9 100644
          SET(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0 -gstabs+")
      ENDIF()
  ENDIF()
-@@ -514,12 +520,13 @@ ELSE()
- ENDIF()
- # Client applications need to define FreeGLUT GLES version to
- # bootstrap headers inclusion in freeglut_std.h:
--SET(PC_LIBNAME "glut")
--SET(PC_FILENAME "freeglut.pc")
-+SET(PC_LIBNAME "${LIBNAME}")
-+SET(PC_FILENAME "${LIBNAME}.pc")
- IF(FREEGLUT_GLES)
-   SET(PC_CFLAGS "-DFREEGLUT_GLES")
--  SET(PC_LIBNAME "freeglut-gles")
--  SET(PC_FILENAME "freeglut-gles.pc")
-+ENDIF()
-+IF(FREEGLUT_BUILD_STATIC_LIBS)
-+  LIST(APPEND PC_CFLAGS -DFREEGLUT_STATIC)
- ENDIF()
- CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/freeglut.pc.in ${CMAKE_BINARY_DIR}/freeglut.pc @ONLY)
- INSTALL(FILES ${CMAKE_BINARY_DIR}/freeglut.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig/ RENAME ${PC_FILENAME})
-diff --git a/freeglut.pc.in b/freeglut.pc.in
-index bc9249c..92545ca 100644
---- a/freeglut.pc.in
-+++ b/freeglut.pc.in
-@@ -8,3 +8,4 @@ Version: @VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_PATCH@
- Libs: -L${libdir} -l@PC_LIBNAME@
- Libs.private: @PC_LIBS_PRIVATE@
- Cflags: -I${includedir} @PC_CFLAGS@
-+Requires: glu
