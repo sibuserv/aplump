@@ -23,19 +23,14 @@
         SetCrossToolchainPath
         cd "${BUILD_DIR}/${PKG_SUBDIR}"
         ln -sf "Configure" "configure"
-        # unset CC
+        unset CC
         export ANDROID_DEV="${ANDROID_SYSROOT}/usr"
-        # dirty workaround for Android NDK r16 and later
-        export ANDROID_API_VER="$(echo ${PLATFORM} | tr -d android-)"
-        export CC="gcc '-D__ANDROID_API__=${ANDROID_API_VER}' -I'${SYSROOT}/usr/include' -I'${SYSROOT}/usr/include/${TARGET}'"
-        # end of dirty workaround
         ConfigurePkgInBuildDir \
             --prefix="${PREFIX}/usr" \
             android \
             shared \
             no-capieng
 
-        #BuildPkg CALC_VERSIONS="SHLIB_COMPAT=;SHLIB_SOVER=" depend
         BuildPkg CALC_VERSIONS="SHLIB_COMPAT=;SHLIB_SOVER=" all
         InstallPkg CALC_VERSIONS="SHLIB_COMPAT=;SHLIB_SOVER=" install_sw
 
