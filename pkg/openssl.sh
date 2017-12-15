@@ -23,12 +23,14 @@
         SetCrossToolchainPath
         cd "${BUILD_DIR}/${PKG_SUBDIR}"
         ln -sf "Configure" "configure"
+        # unset CC
         export ANDROID_DEV="${ANDROID_SYSROOT}/usr"
-        export HOSTCC=gcc
-        unset cc CC cpp CPP cxx CXX
-        unset AR AS LD NM OBJCOPY OBJDUMP RANLIB STRIP
+        # dirty workaround for Android NDK r16 and later
+        export ANDROID_API_VER="$(echo ${PLATFORM} | tr -d android-)"
+        export CC="gcc '-D__ANDROID_API__=${ANDROID_API_VER}' -I'${SYSROOT}/usr/include' -I'${SYSROOT}/usr/include/${TARGET}'"
+        # end of dirty workaround
         ConfigurePkgInBuildDir \
-            --prefix="${SYSROOT}/usr" \
+            --prefix="${PREFIX}/usr" \
             android \
             shared \
             no-capieng
@@ -39,8 +41,8 @@
 
         unset ANDROID_DEV HOSTCC
 
-        cp -af "${BUILD_DIR}/${PKG_SUBDIR}"/lib*.so "${SYSROOT}/usr/lib/"
-        rm -rf "${SYSROOT}/usr/ssl/"
+        cp -af "${BUILD_DIR}/${PKG_SUBDIR}"/lib*.so "${PREFIX}/usr/lib/"
+        rm -rf "${PREFIX}/usr/ssl/"
 
         UnsetCrossToolchainVariables
         CleanPkgBuildDir

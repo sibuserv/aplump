@@ -3,8 +3,8 @@
 PrepareDirs()
 {
     mkdir -p "${PREFIX}"
-    mkdir -p "${SYSROOT}"
-    mkdir -p "${SYSROOT}/usr/lib"
+    mkdir -p "${PREFIX}"
+    mkdir -p "${PREFIX}/usr/lib"
     mkdir -p "${SRC_DIR}"
     mkdir -p "${PKG_SRC_DIR}"
     mkdir -p "${BUILD_DIR}"
@@ -31,7 +31,7 @@ SetSystemPath()
 
 SetLibraryPath()
 {
-    export LIBRARY_PATH="${LIBRARY_PATH}:${SYSROOT}/usr/lib"
+    export LIBRARY_PATH="${LIBRARY_PATH}:${PREFIX}/usr/lib"
 }
 
 UnsetLibraryPath()
@@ -98,7 +98,7 @@ SetAndroidSpecificVariables()
     else
         local TOOLCHAIN="${ANDROID_EABI}"
     fi
-    # dirty fix because of irrational Qt SDK developers
+    # end of dirty fix
 
     for HOST in "linux-x86_64" "linux-x86" "darwin-x86_64" "darwin-x86"
     do
@@ -135,8 +135,8 @@ SetCrossToolchainVariables()
     export STRIP=${CROSS_COMPILE}strip
 
     export PKG_CONFIG_SYSROOT_DIR="/"
-    export PKG_CONFIG_PATH="${SYSROOT}/usr/lib/pkgconfig"
-    export PKG_CONFIG_LIBDIR="${SYSROOT}/usr/lib/pkgconfig"
+    export PKG_CONFIG_PATH="${PREFIX}/usr/lib/pkgconfig"
+    export PKG_CONFIG_LIBDIR="${PREFIX}/usr/lib/pkgconfig"
 }
 
 UnsetCrossToolchainVariables()
@@ -336,14 +336,14 @@ ConfigurePkgInBuildDir()
 ConfigureAutotoolsProject()
 {
     ConfigurePkg \
-        --prefix="${SYSROOT}/usr" \
+        --prefix="${PREFIX}/usr" \
         ${@}
 }
 
 ConfigureAutotoolsProjectInBuildDir()
 {
     ConfigurePkgInBuildDir \
-        --prefix="${SYSROOT}/usr" \
+        --prefix="${PREFIX}/usr" \
         ${@}
 }
 
@@ -399,6 +399,6 @@ CleanPkgBuildDir()
 
 DeleteExtraFiles()
 {
-    find "${SYSROOT}/usr/lib" -type f -name '*.la' -exec rm -f {} \;
+    find "${PREFIX}/usr/lib" -type f -name '*.la' -exec rm -f {} \;
 }
 

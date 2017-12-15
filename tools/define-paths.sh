@@ -5,8 +5,8 @@ ORIG_PATH="${PATH}"
 DefinePaths()
 {
     ANDROID_SYSROOT="${ANDROID_NDK_ROOT}/platforms/${PLATFORM}/arch-${ARCH}"
+    SYSROOT="${ANDROID_NDK_ROOT}/sysroot"
     PREFIX="${MAIN_DIR}/android-ndk-extra-libs/platforms/${PLATFORM}/arch-${ARCH}"
-    SYSROOT="${PREFIX}"
     PKG_DIR="${MAIN_DIR}/pkg"
     SRC_DIR="${MAIN_DIR}/src"
     PKG_SRC_DIR="${MAIN_DIR}/tmp-src"
