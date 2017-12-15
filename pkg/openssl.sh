@@ -37,7 +37,7 @@
         unset ANDROID_DEV HOSTCC
 
         cp -af "${BUILD_DIR}/${PKG_SUBDIR}"/lib*.so "${PREFIX}/usr/lib/"
-        rm -rf "${PREFIX}/usr/ssl/"
+        rm -rf "${PREFIX}/usr/bin/" "${PREFIX}/usr/ssl/"
 
         UnsetCrossToolchainVariables
         CleanPkgBuildDir
