@@ -36,8 +36,16 @@
 
         unset ANDROID_DEV HOSTCC
 
-        cp -af "${BUILD_DIR}/${PKG_SUBDIR}"/lib*.so "${PREFIX}/usr/lib/"
-        rm -rf "${PREFIX}/usr/bin/" "${PREFIX}/usr/ssl/"
+        if ! IsStaticPackage
+        then
+            cp -af "${BUILD_DIR}/${PKG_SUBDIR}"/lib*.so "${PREFIX}/usr/lib/"
+            rm -f "${PREFIX}/usr/lib/libcrypto.a" \
+                  "${PREFIX}/usr/lib/libssl.a"
+        fi
+
+        rm -f  "${PREFIX}/usr/bin/openssl" \
+               "${PREFIX}/usr/bin/c_rehash"
+        rm -rf "${PREFIX}/usr/ssl/"
 
         UnsetCrossToolchainVariables
         CleanPkgBuildDir
