@@ -61,7 +61,7 @@
         BuildPkg -j ${JOBS}
         InstallPkg install
 
-        rm -rf "${PREFIX}/usr/share"
+        rm -rf "${PREFIX}/usr/share/ffmpeg/"
 
         UnsetCrossToolchainVariables
         CleanPkgBuildDir
