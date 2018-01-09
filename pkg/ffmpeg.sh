@@ -20,6 +20,7 @@
         SetBuildFlags
         SetCrossToolchainVariables
         SetCrossToolchainPath
+
         ConfigurePkg \
             --prefix="${PREFIX}/usr" \
             --sysroot="${ANDROID_SYSROOT}" \

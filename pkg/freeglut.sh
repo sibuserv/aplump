@@ -29,6 +29,7 @@
             -DCMAKE_TOOLCHAIN_FILE="${ANDROID_NDK_ROOT}/build/cmake/android.toolchain.cmake" \
             -DCMAKE_INSTALL_PREFIX="${PREFIX}/usr" \
             -DANDROID_TOOLCHAIN="gcc" \
+            -DANDROID_PLATFORM="${ANDROID_PLATFORM}" \
             -DFREEGLUT_BUILD_SHARED_LIBS="${CMAKE_SHARED_BOOL}" \
             -DFREEGLUT_BUILD_STATIC_LIBS="${CMAKE_STATIC_BOOL}" \
             -DFREEGLUT_REPLACE_GLUT=ON \

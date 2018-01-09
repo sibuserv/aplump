@@ -34,7 +34,7 @@
         BuildPkg CALC_VERSIONS="SHLIB_COMPAT=;SHLIB_SOVER=" all
         InstallPkg CALC_VERSIONS="SHLIB_COMPAT=;SHLIB_SOVER=" install_sw
 
-        unset ANDROID_DEV HOSTCC
+        unset ANDROID_DEV
 
         if ! IsStaticPackage
         then
