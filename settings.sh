@@ -22,11 +22,11 @@ JOBS=$(nproc 2>/dev/null || echo 1)
 # JOBS=4
 
 # Default list of packages:
-LOCAL_PKG_LIST="openssl ffmpeg"
+LOCAL_PKG_LIST="openssl ffmpeg freeglut sdl2"
 
 # List of packages which should provide static libraries
 # (all other packages will provide shared libraries):
-STATIC_PKG_LIST="ffmpeg freeglut"
+STATIC_PKG_LIST="ffmpeg freeglut sdl2"
 
 # Delete unpacked source files after successful build of the package (true/false):
 CLEAN_SRC_DIR=true
