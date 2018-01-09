@@ -420,6 +420,11 @@ CleanPkgBuildDir()
     fi
 }
 
+CleanPrefixDir()
+{
+    find "${PREFIX}/usr" -depth -empty -delete
+}
+
 DeleteExtraFiles()
 {
     find "${PREFIX}/usr/lib" -type f -name '*.la' -exec rm -f {} \;
