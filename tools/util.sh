@@ -138,6 +138,19 @@ SetCrossToolchainVariables()
     export PKG_CONFIG_SYSROOT_DIR="/"
     export PKG_CONFIG_PATH="${PREFIX}/usr/lib/pkgconfig"
     export PKG_CONFIG_LIBDIR="${PREFIX}/usr/lib/pkgconfig"
+
+    if IsStaticPackage
+    then
+        export CMAKE_STATIC_BOOL="ON"
+        export CMAKE_SHARED_BOOL="OFF"
+        export AUTOTOOLS_STATIC_STR="--enable-static"
+        export AUTOTOOLS_SHARED_STR="--disable-shared"
+    else
+        export CMAKE_STATIC_BOOL="OFF"
+        export CMAKE_SHARED_BOOL="ON"
+        export AUTOTOOLS_STATIC_STR="--disable-static"
+        export AUTOTOOLS_SHARED_STR="--enable-shared"
+    fi
 }
 
 UnsetCrossToolchainVariables()
