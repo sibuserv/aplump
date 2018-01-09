@@ -40,6 +40,7 @@
 
         CleanPkgBuildDir
         CleanPkgSrcDir
+        CleanPrefixDir
     fi
 )
 

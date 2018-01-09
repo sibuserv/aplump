@@ -50,6 +50,7 @@
         UnsetCrossToolchainVariables
         CleanPkgBuildDir
         CleanPkgSrcDir
+        CleanPrefixDir
     fi
 )
 
