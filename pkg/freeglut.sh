@@ -21,12 +21,16 @@
         SetCrossToolchainVariables
         SetCrossToolchainPath
 
+        # For now freeglut for Android cannot be used as a shared library:
+        export CMAKE_STATIC_BOOL="ON"
+        export CMAKE_SHARED_BOOL="OFF"
+
         ConfigureCmakeProject \
             -DCMAKE_TOOLCHAIN_FILE="${ANDROID_NDK_ROOT}/build/cmake/android.toolchain.cmake" \
             -DCMAKE_INSTALL_PREFIX="${PREFIX}/usr" \
             -DANDROID_TOOLCHAIN="gcc" \
-            -DFREEGLUT_BUILD_SHARED_LIBS=OFF \
-            -DFREEGLUT_BUILD_STATIC_LIBS=ON \
+            -DFREEGLUT_BUILD_SHARED_LIBS="${CMAKE_SHARED_BOOL}" \
+            -DFREEGLUT_BUILD_STATIC_LIBS="${CMAKE_STATIC_BOOL}" \
             -DFREEGLUT_REPLACE_GLUT=ON \
             -DFREEGLUT_GLES=ON \
             -DFREEGLUT_BUILD_DEMOS=OFF
