@@ -23,8 +23,8 @@
         ConfigurePkg \
             --prefix="${PREFIX}/usr" \
             --sysroot="${ANDROID_SYSROOT}" \
-            --enable-static \
-            --disable-shared \
+            ${AUTOTOOLS_STATIC_STR} \
+            ${AUTOTOOLS_SHARED_STR} \
             --arch="${ARCH}" \
             --cross-prefix="${TARGET}-" \
             --enable-cross-compile \
