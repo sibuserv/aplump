@@ -176,6 +176,15 @@ CheckDependencies()
     fi
 }
 
+IsStaticPackage()
+{
+    for STATIC_PKG in ${STATIC_PKG_LIST}
+    do
+        [ "${STATIC_PKG}" = "${PKG}" ] && return 0 || true
+    done
+    return 1
+}
+
 IsVer1GreaterOrEqualToVer2()
 {
     [ "${1}" = "$(echo -e "${1}\n${2}" | sort -V | tail -n1)" ] && \
