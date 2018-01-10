@@ -21,20 +21,24 @@
         SetBuildFlags
         SetCrossToolchainVariables
         SetCrossToolchainPath
+
         cd "${BUILD_DIR}/${PKG_SUBDIR}"
         ln -sf "Configure" "configure"
         unset CC
         export ANDROID_DEV="${ANDROID_SYSROOT}/usr"
+        IsStaticPackage && \
+            export LIB_TYPE="no-shared" || \
+            export LIB_TYPE="shared"
         ConfigurePkgInBuildDir \
             --prefix="${PREFIX}/usr" \
             android \
-            shared \
+            "${LIB_TYPE}" \
             no-capieng
 
         BuildPkg CALC_VERSIONS="SHLIB_COMPAT=;SHLIB_SOVER=" all
         InstallPkg CALC_VERSIONS="SHLIB_COMPAT=;SHLIB_SOVER=" install_sw
 
-        unset ANDROID_DEV
+        unset ANDROID_DEV LIB_TYPE
 
         if ! IsStaticPackage
         then
