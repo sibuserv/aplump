@@ -1,3 +1,7 @@
 --- TODO ---
-* 
-
+* Add packages: qt5, qtbase, qtactiveqt, qtcanvas3d, qtcharts, qtconnectivity,
+  qtdatavis3d, qtdeclarative, qtgamepad, qtgraphicaleffects, qtlocation,
+  qtmodule, qtmultimedia, qtquickcontrols2, qtquickcontrols, qtscript,
+  qtsensors, qtserialport, qtsvg, qttools, qttranslations, qtvirtualkeyboard,
+  qtwebchannel, qtwebsockets, qtx11extras, qtxmlpatterns.
+* Move `make download` section for Android from sibuserv project to aplump.
