@@ -3,5 +3,5 @@
   qtdatavis3d, qtdeclarative, qtgamepad, qtgraphicaleffects, qtlocation,
   qtmultimedia, qtquickcontrols2, qtquickcontrols, qtscript, qtsensors,
   qtserialport, qtsvg, qttools, qttranslations, qtvirtualkeyboard,
-  qtwebchannel, qtwebsockets, qtx11extras, qtxmlpatterns.
+  qtwebchannel, qtwebsockets, qtandroidextras, qtxmlpatterns.
 * Move `make download` section for Android from sibuserv project to aplump.
