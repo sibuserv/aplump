@@ -261,28 +261,14 @@ GetSources()
 
     local WGET="wget -v -c --no-config --no-check-certificate --max-redirect=50"
     local LOG_FILE="${LOG_DIR}/${PKG_SUBDIR}/tarball-download.log"
-    local TARBALL_SIZE="${LOG_DIR}/${PKG_SUBDIR}/tarball-size.info"
     mkdir -p "${LOG_DIR}/${PKG_SUBDIR}"
     cd "${SRC_DIR}"
     if [ ! -e "${PKG_FILE}" ]
     then
-        CheckPkgUrl
-        local SIZE=$(curl -I "${PKG_URL}" 2>&1 | sed -ne "s|^Content-Length: \(.*\)$|\1|p")
-        echo "${SIZE}" > "${TARBALL_SIZE}"
         BeginDownload
+        CheckPkgUrl
         ${WGET} -o "${LOG_FILE}" -O "${PKG_FILE}" "${PKG_URL}"
         CheckFail "${LOG_FILE}"
-    elif [ -e "${TARBALL_SIZE}" ]
-    then
-        CheckPkgUrl
-        local SIZE=$(cat "${TARBALL_SIZE}")
-        local FILE_SIZE=$(curl -I "file:${SRC_DIR}/${PKG_FILE}" 2>&1 | sed -ne "s|^Content-Length: \(.*\)$|\1|p")
-        if [ "${FILE_SIZE}" != "${SIZE}" ]
-        then
-            BeginDownload
-            ${WGET} -o "${LOG_FILE}" -O "${PKG_FILE}" "${PKG_URL}"
-            CheckFail "${LOG_FILE}"
-        fi
     fi
     local TARBALL_CHECKSUM=$(openssl dgst -sha256 "${PKG_FILE}" 2>/dev/null | sed -n 's,^.*\([0-9a-f]\{64\}\)$,\1,p')
     if [ "${TARBALL_CHECKSUM}" != "${PKG_CHECKSUM}" ]
@@ -291,6 +277,8 @@ GetSources()
         echo "Error! Checksum mismatch:"
         echo "TARBALL_CHECKSUM = ${TARBALL_CHECKSUM}"
         echo "PKG_CHECKSUM     = ${PKG_CHECKSUM}"
+        echo "Try to remove tarball to force build system to download it again:"
+        echo "rm \"${SRC_DIR}/${PKG_FILE}\""
         exit 1
     fi
 
