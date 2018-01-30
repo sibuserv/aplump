@@ -305,7 +305,7 @@ UnpackSources()
         rm "${PKG_FILE}"
 
         local PATCH_FILE="${PKG_DIR}/${PKG}-${PKG_VERSION}.patch"
-        if [ -e "${PATCH_FILE}" ]
+        if [ -e "${PATCH_FILE}" ] || [ -h "${PATCH_FILE}" ]
         then
             local LOG_FILE="${LOG_DIR}/${PKG_SUBDIR}/patch.log"
             cd "${PKG_SRC_DIR}/${SUBDIR}"

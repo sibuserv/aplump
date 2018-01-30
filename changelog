@@ -1,3 +1,6 @@
+--- v1.2 (2018-xx-xx) ---
+* Improve UnpackSources(): more intelligent applying of patches.
+
 --- v1.1 (2018-01-24) ---
 * Improve static build of openssl package.
 * Improve notifications during build of packages.
