@@ -1,4 +1,6 @@
 #!/bin/bash
+#
+# This file is part of aplump project. See LICENSE file for licensing information.
 
 PrepareDirs()
 {

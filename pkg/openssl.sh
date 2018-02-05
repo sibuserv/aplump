@@ -1,4 +1,6 @@
 #!/bin/sh
+#
+# This file is part of aplump project. See LICENSE file for licensing information.
 
 (
     PKG=openssl
