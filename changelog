@@ -3,6 +3,7 @@
 * Improve CheckPkgUrl().
 * Update packages:
   - openssl: fix PKG_URL_2
+  - ffmpeg: update to version 3.4.2
   - sdl2: update to version 2.0.8, delete patch (accepted by upstream)
 
 --- v1.1 (2018-01-24) ---

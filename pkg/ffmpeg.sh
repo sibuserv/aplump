@@ -4,11 +4,11 @@
 
 (
     PKG=ffmpeg
-    PKG_VERSION=3.4.1
-    PKG_CHECKSUM=f3443e20154a590ab8a9eef7bc951e8731425efc75b44ff4bee31d8a7a574a2c
+    PKG_VERSION=3.4.2
+    PKG_CHECKSUM=eb0370bf223809b9ebb359fed5318f826ac038ce77933b3afd55ab1a0a21785a
     PKG_SUBDIR=${PKG}-${PKG_VERSION}
     PKG_FILE=${PKG_SUBDIR}.tar.bz2
-    PKG_URL="http://www.ffmpeg.org/releases/${PKG_FILE}"
+    PKG_URL="https://www.ffmpeg.org/releases/${PKG_FILE}"
     PKG_DEPS=""
 
     if ! IsPkgInstalled
