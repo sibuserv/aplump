@@ -9,18 +9,34 @@ Description:
 Collection of scripts for building of some extra libraries for Android.
 
 Dependencies:
-Android NDK, bash, realpath, pkg-config, make, autoreconf, automake, cmake,
-wget, curl, tar (with gzip, bzip2 and xz support), patch, sed, find, openssl
+bash, realpath, pkg-config, make, autoreconf, automake, cmake, wget, curl,
+tar (with gzip, bzip2 and xz support), unzip, patch, sed, find, openssl
+
+Settings:
+  Edit file settings.sh or add file settings.sh.<any-suffix>
 
 Examples of usage:
+
+# Downloading and unpacking of Android NDK and Android SDK:
+  make android-ndk android-sdk
+
+# Installation of Android NDK and Android SDK to target location:
+  sudo make install-ndk
+  sudo make install-sdk
+
+# Building of extra libraries:
   make
   make openssl freeglut
-  make install
+
+# Other options:
   make list
   make clean
   make distclean
   make version
   make help
+
+# Installation of extra libraries into Android NDK:
+  sudo make install
 
 Some useful links:
   https://github.com/sibuserv/sibuserv
