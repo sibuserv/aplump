@@ -4,14 +4,12 @@
 
 (
     PKG=sdl2
-    PKG_VERSION=43bba409e6d2
-    PKG_CHECKSUM=3ad7878d650f8619d952139638f9ea8f63f4a86f0b926376c4e0770a134fb6f9
+    PKG_VERSION=2.0.8
+    PKG_CHECKSUM=edc77c57308661d576e843344d8638e025a7818bff73f8fbfab09c3c5fd092ec
     PKG_SUBDIR=${PKG}-${PKG_VERSION}
-    #PKG_SUBDIR_ORIG=SDL2-${PKG_VERSION}
-    PKG_SUBDIR_ORIG=SDL-${PKG_VERSION}
+    PKG_SUBDIR_ORIG=SDL2-${PKG_VERSION}
     PKG_FILE=${PKG_SUBDIR_ORIG}.tar.gz
-    #PKG_URL="http://www.libsdl.org/release/${PKG_FILE}"
-    PKG_URL="https://hg.libsdl.org/SDL/archive/${PKG_VERSION}.tar.gz"
+    PKG_URL="https://www.libsdl.org/release/${PKG_FILE}"
     PKG_DEPS=""
 
     if ! IsPkgInstalled

@@ -1,6 +1,8 @@
 --- v1.2 (2018-xx-xx) ---
 * Improve UnpackSources(): more intelligent applying of patches.
 * Improve CheckPkgUrl().
+* Update packages:
+  - sdl2: update to version 2.0.8, delete patch (accepted by upstream)
 
 --- v1.1 (2018-01-24) ---
 * Improve static build of openssl package.
