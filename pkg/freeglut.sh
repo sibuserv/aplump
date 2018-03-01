@@ -8,7 +8,7 @@
     PKG_CHECKSUM=2a43be8515b01ea82bcfa17d29ae0d40bd128342f0930cd1f375f1ff999f76a2
     PKG_SUBDIR=${PKG}-${PKG_VERSION}
     PKG_FILE=${PKG}-${PKG_VERSION}.tar.gz
-    PKG_URL="https://sourceforge.net/projects/${PKG}/files/${PKG}/${PKG_VERSION}/${PKG_FILE}"
+    PKG_URL="https://sourceforge.net/projects/freeglut/files/freeglut/${PKG_VERSION}/${PKG_FILE}"
     PKG_DEPS=""
 
     if ! IsPkgInstalled
