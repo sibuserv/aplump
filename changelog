@@ -2,6 +2,8 @@
 * Add ANDROID_SDK_ROOT variable into settings.
 * Add special packages android-ndk and android-sdk for downloading and unpacking
   of Android NDK and Android SDK.
+* Add install-ndk and install-sdk targets (see README or `make help`) for
+  copying of unpacked Android NDK and Android SDK to target location.
 * Improve UnpackSources(): more intelligent applying of patches.
 * Improve CheckPkgUrl().
 * Update packages:

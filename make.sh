@@ -19,15 +19,18 @@ then
 
 Options:
     list            display the list of available packages
-    install         copy all built extra libs into Android NDK
+    install-ndk     copy unpacked Android NDK to target location
+    install-sdk     copy unpacked Android SDK to target location
+    install         copy all built extra libraries into Android NDK
     clean           clean up (delete android-ndk-extra-libs/ subdirectory with all files)
     distclean       full clean up (delete android-ndk-extra-libs/ and src/ subdirectories with all files)
     version         display project version and exit
     help            display this help and exit
 
 Examples:
-    make
+    make android-ndk android-sdk
     make openssl freeglut
+    make
     make install
     make clean
     make distclean
@@ -51,6 +54,34 @@ then
              "tarball with sources of this project."
         exit 1
     fi
+    exit 0
+elif [ "${1}" = "install-ndk" ] && [ -z "${2}" ]
+then
+    cd "${MAIN_DIR}"
+    SUBDIR="$(ls -d android-ndk-r* 2> /dev/null | sort -V | tail -n1)"
+    if [ -z "${SUBDIR}" ]
+    then
+        echo "Error! Directory with Android NDK is not found!"
+        echo "Make sure that you have downloaded and unpacked it using of:"
+        echo "make android-ndk"
+        exit 1
+    fi
+    echo "cp -afT \"${MAIN_DIR}/${SUBDIR}\" \"${ANDROID_NDK_ROOT}\""
+    cp -afT "${MAIN_DIR}/${SUBDIR}" "${ANDROID_NDK_ROOT}"
+    exit 0
+elif [ "${1}" = "install-sdk" ] && [ -z "${2}" ]
+then
+    cd "${MAIN_DIR}"
+    SUBDIR="$(ls -d android-sdk* 2> /dev/null | sort -V | tail -n1)"
+    if [ -z "${SUBDIR}" ]
+    then
+        echo "Error! Directory with Android SDK is not found!"
+        echo "Make sure that you have downloaded and unpacked it using of:"
+        echo "make android-sdk"
+        exit 1
+    fi
+    echo "cp -afT \"${MAIN_DIR}/${SUBDIR}\" \"${ANDROID_NDK_ROOT}\""
+    cp -afT "${MAIN_DIR}/${SUBDIR}" "${ANDROID_NDK_ROOT}"
     exit 0
 elif [ "${1}" = "install" ] && [ -z "${2}" ]
 then
