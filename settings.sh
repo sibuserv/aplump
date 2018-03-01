@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# https://dl.google.com/android/repository/android-ndk-r15b-linux-x86_64.zip
+ANDROID_SDK_ROOT="/opt/android_sdk/android-sdk-linux"
 ANDROID_NDK_ROOT="/opt/android_ndk/android-ndk-r15b"
 
 PLATFORMS="
