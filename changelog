@@ -1,5 +1,7 @@
 --- v1.2 (2018-xx-xx) ---
 * Add ANDROID_SDK_ROOT variable into settings.
+* Add special packages android-ndk and android-sdk for downloading and unpacking
+  of Android NDK and Android SDK.
 * Improve UnpackSources(): more intelligent applying of patches.
 * Improve CheckPkgUrl().
 * Update packages:

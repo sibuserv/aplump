@@ -275,7 +275,7 @@ IsTarballCheckRequired()
 
 GetSources()
 {
-    PrintSystemInfo
+    [ "${1}" != "quiet" ] && PrintSystemInfo
 
     local WGET="wget -v -c --no-config --no-check-certificate --max-redirect=50"
     local LOG_FILE="${LOG_DIR}/${PKG_SUBDIR}/tarball-download.log"
