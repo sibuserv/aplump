@@ -55,7 +55,7 @@ then
         exit 1
     fi
     exit 0
-elif [ "${1}" = "install-ndk" ] && [ -z "${2}" ]
+elif [ "${1}" = "install-ndk" ]
 then
     cd "${MAIN_DIR}"
     SUBDIR="$(ls -d android-ndk-r* 2> /dev/null | sort -V | tail -n1)"
@@ -69,7 +69,7 @@ then
     echo "cp -afT \"${MAIN_DIR}/${SUBDIR}\" \"${ANDROID_NDK_ROOT}\""
     cp -afT "${MAIN_DIR}/${SUBDIR}" "${ANDROID_NDK_ROOT}"
     exit 0
-elif [ "${1}" = "install-sdk" ] && [ -z "${2}" ]
+elif [ "${1}" = "install-sdk" ]
 then
     cd "${MAIN_DIR}"
     SUBDIR="$(ls -d android-sdk* 2> /dev/null | sort -V | tail -n1)"
@@ -83,7 +83,7 @@ then
     echo "cp -afT \"${MAIN_DIR}/${SUBDIR}\" \"${ANDROID_NDK_ROOT}\""
     cp -afT "${MAIN_DIR}/${SUBDIR}" "${ANDROID_NDK_ROOT}"
     exit 0
-elif [ "${1}" = "install" ] && [ -z "${2}" ]
+elif [ "${1}" = "install" ]
 then
     echo "cp -af \"${MAIN_DIR}/android-ndk-extra-libs\"/* \"${ANDROID_NDK_ROOT}/\""
     cp -af "${MAIN_DIR}/android-ndk-extra-libs"/* "${ANDROID_NDK_ROOT}/"
@@ -92,7 +92,7 @@ elif [ "${1}" = "list" ]
 then
     grep 'PKG=' "${MAIN_DIR}/pkg"/*.sh | sed -ne "s|.*pkg/\(.*\)\.sh:.*|\1|p"
     exit 0
-elif [ "${1}" = "clean" ] && [ -z "${2}" ]
+elif [ "${1}" = "clean" ]
 then
     cd "${MAIN_DIR}" || exit 1
     for DEL_DIR in "android-ndk-extra-libs" "installed" "log" "tmp-build" "tmp-src"
@@ -102,7 +102,7 @@ then
         rm -rf "${MAIN_DIR}/${DEL_DIR}"
     done
     exit 0
-elif [ "${1}" = "distclean" ] && [ -z "${2}" ]
+elif [ "${1}" = "distclean" ]
 then
     "${MAIN_DIR}/make.sh" clean
     if [ -d "${MAIN_DIR}/src" ]

@@ -21,8 +21,7 @@ Examples of usage:
   make android-ndk android-sdk
 
 # Installation of Android NDK and Android SDK to target location:
-  sudo make install-ndk
-  sudo make install-sdk
+  sudo make install-ndk install-sdk
 
 # Building of extra libraries:
   make
