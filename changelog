@@ -1,4 +1,4 @@
---- v1.2 (2018-xx-xx) ---
+--- v1.2 (2018-03-02) ---
 * Add ANDROID_SDK_ROOT variable into settings.
 * Add special packages android-ndk and android-sdk for downloading and unpacking
   of Android NDK and Android SDK.
