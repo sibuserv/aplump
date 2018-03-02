@@ -80,8 +80,8 @@ then
         echo "make android-sdk"
         exit 1
     fi
-    echo "cp -afT \"${MAIN_DIR}/${SUBDIR}\" \"${ANDROID_NDK_ROOT}\""
-    cp -afT "${MAIN_DIR}/${SUBDIR}" "${ANDROID_NDK_ROOT}"
+    echo "cp -afT \"${MAIN_DIR}/${SUBDIR}\" \"${ANDROID_SDK_ROOT}\""
+    cp -afT "${MAIN_DIR}/${SUBDIR}" "${ANDROID_SDK_ROOT}"
     exit 0
 elif [ "${1}" = "install" ]
 then
