@@ -26,6 +26,9 @@
         ConfigurePkg \
             --prefix="${PREFIX}/usr" \
             --sysroot="${ANDROID_SYSROOT}" \
+            --extra-cflags="-I\"${PREFIX}/usr/include\"" \
+            --extra-cxxflags="-I\"${PREFIX}/usr/include\"" \
+            --extra-ldflags="-L\"${PREFIX}/usr/lib\"" \
             ${AUTOTOOLS_STATIC_STR} \
             ${AUTOTOOLS_SHARED_STR} \
             --arch="${ARCH}" \
@@ -35,6 +38,7 @@
             --enable-avisynth \
             --enable-avresample \
             --enable-libx264 \
+            --enable-pic \
             --enable-gpl \
             --disable-debug \
             --disable-doc \

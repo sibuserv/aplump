@@ -162,6 +162,3 @@ do
     done
 done
 
-rmdir --ignore-fail-on-non-empty "${PKG_SRC_DIR}"   &> /dev/null
-rmdir --ignore-fail-on-non-empty "${BUILD_DIR}"     &> /dev/null
-
