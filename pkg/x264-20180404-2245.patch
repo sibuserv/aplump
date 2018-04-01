@@ -1,0 +1,18 @@
+Author: Boris Pek <tehnick-8@yandex.ru>
+Date:   Thu Apr 2 00:56:06 2018 +0300
+
+    Android does not support shared libraries with version suffix.
+
+diff --git a/configure b/configure
+index 79f76cd..bdd4cd8 100755
+--- a/configure
++++ b/configure
+@@ -1499,7 +1499,7 @@ if [ "$shared" = "yes" ]; then
+         echo "SOFLAGS=-shared -Wl,-h,\$(SONAME) $SOFLAGS" >> config.mak
+     else
+         echo "SOSUFFIX=so" >> config.mak
+-        echo "SONAME=libx264.so.$API" >> config.mak
++        echo "SONAME=libx264.so" >> config.mak
+         echo "SOFLAGS=-shared -Wl,-soname,\$(SONAME) $SOFLAGS" >> config.mak
+     fi
+     echo 'default: lib-shared' >> config.mak

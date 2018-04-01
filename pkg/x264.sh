@@ -40,13 +40,6 @@
         BuildPkg -j ${JOBS}
         InstallPkg install
 
-        if ! IsStaticPackage
-        then
-            cd "${PREFIX}/usr/lib"
-            rm libx264.so
-            mv libx264.so.* libx264.so
-        fi
-
         UnsetCrossToolchainVariables
         CleanPkgBuildDir
         CleanPkgSrcDir
