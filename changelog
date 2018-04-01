@@ -1,3 +1,7 @@
+--- v1.4 (2018-xx-xx) ---
+* Add new package: x264.
+* Build package ffmpeg with x264 support.
+
 --- v1.3 (2018-03-03) ---
 * Fix typo in code for install-sdk target: install to ANDROID_SDK_ROOT instead
   of ANDROID_NDK_ROOT.

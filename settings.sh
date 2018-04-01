@@ -26,7 +26,7 @@ LOCAL_PKG_LIST="openssl ffmpeg freeglut sdl2"
 
 # List of packages which should provide static libraries
 # (all other packages will provide shared libraries):
-STATIC_PKG_LIST="ffmpeg freeglut sdl2"
+STATIC_PKG_LIST="ffmpeg freeglut sdl2 x264"
 
 # Delete unpacked source files after successful build of the package (true/false):
 CLEAN_SRC_DIR=true

@@ -9,7 +9,7 @@
     PKG_SUBDIR=${PKG}-${PKG_VERSION}
     PKG_FILE=${PKG_SUBDIR}.tar.bz2
     PKG_URL="https://www.ffmpeg.org/releases/${PKG_FILE}"
-    PKG_DEPS=""
+    PKG_DEPS="x264"
 
     if ! IsPkgInstalled
     then
@@ -34,6 +34,7 @@
             --target-os=android \
             --enable-avisynth \
             --enable-avresample \
+            --enable-libx264 \
             --enable-gpl \
             --disable-debug \
             --disable-doc \
@@ -51,7 +52,6 @@
             --disable-libvo-amrwbenc \
             --disable-libvorbis \
             --disable-libvpx \
-            --disable-libx264 \
             --disable-libxvid \
             --disable-programs \
             --disable-iconv \
