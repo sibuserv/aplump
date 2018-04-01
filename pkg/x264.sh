@@ -24,9 +24,14 @@
         SetCrossToolchainVariables
         SetCrossToolchainPath
 
-        IsStaticPackage && \
-            LIB_TYPE_OPTS="--enable-static" || \
-            LIB_TYPE_OPTS="--enable-shared"
+        # IsStaticPackage && \
+        #     LIB_TYPE_OPTS="--enable-static" || \
+        #     LIB_TYPE_OPTS="--enable-shared"
+
+        # For now ffmpeg for Android cannot be built with libx264 in a shared
+        # library mode, so build it as static library:
+        LIB_TYPE_OPTS="--enable-static"
+
         ConfigurePkg \
             --prefix="${PREFIX}/usr" \
             --sysroot="${ANDROID_SYSROOT}" \
