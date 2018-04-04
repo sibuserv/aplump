@@ -1,6 +1,5 @@
 --- v1.4 (2018-xx-xx) ---
 * Add new package: x264.
-* Build package ffmpeg with x264 support.
 * Update packages:
   - openssl: update to version 1.0.2o
 
