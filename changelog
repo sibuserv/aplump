@@ -1,5 +1,9 @@
 --- v1.4 (2018-xx-xx) ---
 * Add new package: x264.
+* Add `make all` target: build all available packages.
+* Add `make download` target: download sources without build of packages.
+* Improve GetSources() function: show error message if size of downloaded
+  tarball is equal to zero. (Only checksum mismatch was shown earlier.)
 * Update packages:
   - openssl: update to version 1.0.2o
 

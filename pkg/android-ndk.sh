@@ -12,11 +12,10 @@
     PKG_URL="https://dl.google.com/android/repository/${PKG_FILE}"
     PKG_DEPS=""
 
+    CheckSourcesAndDependencies
+
     if [ ! -d "${MAIN_DIR}/${PKG_SUBDIR}" ]
     then
-        CheckDependencies
-        GetSources "quiet"
-
         echo "[unpack]   ${PKG_FILE}"
         UnpackSources
 

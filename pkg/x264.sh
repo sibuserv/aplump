@@ -12,11 +12,12 @@
     PKG_URL="https://download.videolan.org/pub/videolan/x264/snapshots/${PKG_FILE}"
     PKG_DEPS=""
 
-    if ! IsPkgInstalled
-    then
-        CheckDependencies
+    CheckSourcesAndDependencies
 
-        GetSources
+    if IsBuildRequired
+    then
+        PrintSystemInfo
+        BeginOfPkgBuild
         UnpackSources
         PrepareBuild
 

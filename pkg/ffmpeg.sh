@@ -11,11 +11,12 @@
     PKG_URL="https://www.ffmpeg.org/releases/${PKG_FILE}"
     PKG_DEPS=""
 
-    if ! IsPkgInstalled
-    then
-        CheckDependencies
+    CheckSourcesAndDependencies
 
-        GetSources
+    if IsBuildRequired
+    then
+        PrintSystemInfo
+        BeginOfPkgBuild
         UnpackSources
         PrepareBuild
 

@@ -13,11 +13,12 @@
     PKG_URL_2="ftp://ftp.openssl.org/source/old/${PKG_SUBVERSION}/${PKG_FILE}"
     PKG_DEPS=""
 
-    if ! IsPkgInstalled
-    then
-        CheckDependencies
+    CheckSourcesAndDependencies
 
-        GetSources
+    if IsBuildRequired
+    then
+        PrintSystemInfo
+        BeginOfPkgBuild
         UnpackSources
         CopySrcAndPrepareBuild
 

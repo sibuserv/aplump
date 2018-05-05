@@ -12,11 +12,12 @@
     PKG_URL="https://www.libsdl.org/release/${PKG_FILE}"
     PKG_DEPS=""
 
-    if ! IsPkgInstalled
-    then
-        CheckDependencies
+    CheckSourcesAndDependencies
 
-        GetSources
+    if IsBuildRequired
+    then
+        PrintSystemInfo
+        BeginOfPkgBuild
         UnpackSources
         PrepareBuild
 

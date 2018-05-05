@@ -9,7 +9,7 @@ Description:
 Collection of scripts for building of some extra libraries for Android.
 
 Dependencies:
-bash, realpath, pkg-config, make, autoreconf, automake, cmake, wget, curl,
+bash, realpath, pkg-config, make, autoreconf, automake, cmake, wget, curl, du,
 tar (with gzip, bzip2 and xz support), unzip, patch, sed, find, openssl
 
 Settings:
@@ -28,6 +28,7 @@ Examples of usage:
   make openssl freeglut
 
 # Other options:
+  make download
   make list
   make clean
   make distclean
