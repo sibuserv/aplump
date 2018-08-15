@@ -2,6 +2,8 @@
 * Add new package: x264.
 * Add `make all` target: build all available packages.
 * Add `make download` target: download sources without build of packages.
+* Make `make clean` and `make distclean` targets interactive: user should
+  explicitly confirm massive file deletion.
 * Delete extra variables CLEAN_SRC_DIR and CLEAN_BUILD_DIR from settings file.
 * Improve GetSources() function: show error message if size of downloaded
   tarball is equal to zero. (Only checksum mismatch was shown earlier.)

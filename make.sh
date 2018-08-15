@@ -97,24 +97,40 @@ elif [ "${1}" = "list" ]
 then
     grep 'PKG=' "${MAIN_DIR}/pkg"/*.sh | sed -ne "s|.*pkg/\(.*\)\.sh:.*|\1|p"
     exit 0
-elif [ "${1}" = "clean" ]
+elif [ "${1}" = "clean" ] && [ -z "${2}" ]
 then
     cd "${MAIN_DIR}" || exit 1
-    for DEL_DIR in "android-ndk-extra-libs" "installed" "log" "tmp-build" "tmp-src"
-    do
-        [ -d "${MAIN_DIR}/${DEL_DIR}" ] || continue
-        echo "rm -rf \"${MAIN_DIR}/${DEL_DIR}\""
-        rm -rf "${MAIN_DIR}/${DEL_DIR}"
-    done
+    read -p "Do you wish to delete all files from \"android-ndk-extra-libs\" subdirectory? [y/N] " REPLY
+    case "${REPLY}" in
+    "y" | "Y" | "yes" | "Yes")
+        for DEL_DIR in "android-ndk-extra-libs" "installed" "log" "tmp-build" "tmp-src"
+        do
+            [ -d "${MAIN_DIR}/${DEL_DIR}" ] || continue
+            echo "rm -rf \"${MAIN_DIR}/${DEL_DIR}\""
+            rm -rf "${MAIN_DIR}/${DEL_DIR}"
+        done
+    ;;
+    *)
+        echo "Aborted."
+    ;;
+    esac
     exit 0
-elif [ "${1}" = "distclean" ]
+elif [ "${1}" = "distclean" ] && [ -z "${2}" ]
 then
     "${MAIN_DIR}/make.sh" clean
-    if [ -d "${MAIN_DIR}/src" ]
-    then
-        echo "rm -rf \"${MAIN_DIR}/src\""
-        rm -rf "${MAIN_DIR}/src"
-    fi
+    read -p "Do you wish to delete all files from \"src\" subdirectory? [y/N] " REPLY
+    case "${REPLY}" in
+    "y" | "Y" | "yes" | "Yes")
+        if [ -d "${MAIN_DIR}/src" ]
+        then
+            echo "rm -rf \"${MAIN_DIR}/src\""
+            rm -rf "${MAIN_DIR}/src"
+        fi
+    ;;
+    *)
+        echo "Aborted."
+    ;;
+    esac
     exit 0
 elif [ "${1}" = "download" ]
 then
