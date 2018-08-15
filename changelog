@@ -6,7 +6,7 @@
 * Improve GetSources() function: show error message if size of downloaded
   tarball is equal to zero. (Only checksum mismatch was shown earlier.)
 * Update packages:
-  - openssl: update to version 1.0.2o
+  - openssl: update to version 1.0.2p
 
 --- v1.3 (2018-03-03) ---
 * Fix typo in code for install-sdk target: install to ANDROID_SDK_ROOT instead
