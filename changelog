@@ -1,3 +1,7 @@
+--- v1.5 (2019-xx-xx) ---
+* Update packages:
+  - openssl: update to version 1.0.2q
+
 --- v1.4 (2018-08-31) ---
 * Add new package: x264.
 * Add `make all` target: build all available packages.

@@ -4,9 +4,9 @@
 
 (
     PKG=openssl
-    PKG_VERSION=1.0.2p
+    PKG_VERSION=1.0.2q
     PKG_SUBVERSION=1.0.2
-    PKG_CHECKSUM=50a98e07b1a89eb8f6a99477f262df71c6fa7bef77df4dc83025a2845c827d00
+    PKG_CHECKSUM=5744cfcbcec2b1b48629f7354203bc1e5e9b5466998bbccc5b5fcde3b18eb684
     PKG_SUBDIR=${PKG}-${PKG_VERSION}
     PKG_FILE=${PKG}-${PKG_VERSION}.tar.gz
     PKG_URL="ftp://ftp.openssl.org/source/${PKG_FILE}"
