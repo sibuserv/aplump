@@ -4,8 +4,8 @@
 
 (
     PKG=sdl2
-    PKG_VERSION=2.0.8
-    PKG_CHECKSUM=edc77c57308661d576e843344d8638e025a7818bff73f8fbfab09c3c5fd092ec
+    PKG_VERSION=2.0.9
+    PKG_CHECKSUM=255186dc676ecd0c1dbf10ec8a2cc5d6869b5079d8a38194c2aecdff54b324b1
     PKG_SUBDIR=${PKG}-${PKG_VERSION}
     PKG_SUBDIR_ORIG=SDL2-${PKG_VERSION}
     PKG_FILE=${PKG_SUBDIR_ORIG}.tar.gz
@@ -29,7 +29,7 @@
         ConfigureCmakeProject \
             -DCMAKE_TOOLCHAIN_FILE="${ANDROID_NDK_ROOT}/build/cmake/android.toolchain.cmake" \
             -DCMAKE_INSTALL_PREFIX="${PREFIX}/usr" \
-            -DANDROID_TOOLCHAIN="gcc" \
+            -DANDROID_TOOLCHAIN="clang" \
             -DANDROID_PLATFORM="${ANDROID_PLATFORM}" \
             -DANDROID_ABI="${ANDROID_ABI}" \
             -DCMAKE_BUILD_TYPE="Release" \
