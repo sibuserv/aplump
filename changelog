@@ -1,6 +1,7 @@
 --- v1.5 (2019-xx-xx) ---
 * Update packages:
   - openssl: update to version 1.0.2q
+  - ffmpeg: update to version 4.0.3
   - sdl2: update to version 2.0.9, switch to build using clang by default,
     because build using gcc for Android is not supported by upstream anymore
 
