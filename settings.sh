@@ -15,7 +15,7 @@ PLATFORMS="
           android-26
           "
 
-ARCHITECTURES="arm x86"
+ARCHITECTURES="arm arm64 x86"
 
 # Number of compilation processes during building of each package:
 JOBS=$(nproc 2>/dev/null || echo 1)
